@@ -1,0 +1,38 @@
+# .github/workflows/deploy.yml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # или master в зависимости от вашей основной ветки
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js ⚙️
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # или другая нужная версия
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies 📦
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Generate static site 🏗
+        run: |
+          cd frontend
+          npm run generate
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # Ветка, на которую деплоится сайт
+          folder: frontend/.output/public # Папка с собранным статичным сайтом
+          clean: true # Удаляет предыдущие файлы при деплое
