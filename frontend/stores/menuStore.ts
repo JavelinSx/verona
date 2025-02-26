@@ -1,68 +1,32 @@
 // stores/menuStore.ts
 import { defineStore } from 'pinia';
-import type { MenuState } from '~/types/menu';
+import { directionsData, mainSections } from '~/utils/menuData';
+import type { MenuItem, MenuSection } from '~/types/menu';
 
 export const useMenuStore = defineStore('menu', {
-  state: (): MenuState => ({
-    isOpen: false,
+  state: () => ({
+    isMenuOpen: false,
     isMobileMenuOpen: false,
-    directions: [
-      {
-        title: 'Диагностика',
-        items: ['УЗИ', 'Анализы', 'Обследования'],
-        icon: 'heroicons:beaker',
-      },
-      {
-        title: 'Лечение',
-        items: ['Терапия', 'Кардиология', 'Эндокринология', 'Гинекология', 'Урология', 'Хирургия'],
-        icon: 'heroicons:heart',
-      },
-      {
-        title: 'Специальные направления',
-        items: ['Дневной стационар', 'Онкология', 'Клинические исследования'],
-        icon: 'heroicons:academic-cap',
-      },
-    ],
-    mainSections: [
-      {
-        title: 'Врачи',
-        path: '/doctors',
-        icon: 'heroicons:user-group',
-      },
-      {
-        title: 'Цены',
-        path: '/prices',
-        icon: 'heroicons:currency-dollar',
-      },
-      {
-        title: 'О клинике',
-        path: '/about',
-        icon: 'heroicons:information-circle',
-      },
-    ],
+    directions: directionsData,
+    mainSections: mainSections,
   }),
-
+  getters: {
+    isOpen: (state) => state.isMenuOpen,
+    getAllDirections: (state) => state.directions,
+    getMainSections: (state) => state.mainSections,
+  },
   actions: {
     toggleMenu() {
-      this.isOpen = !this.isOpen;
-      if (this.isOpen) this.isMobileMenuOpen = false;
+      this.isMenuOpen = !this.isMenuOpen;
     },
     closeMenu() {
-      this.isOpen = false;
+      this.isMenuOpen = false;
     },
     toggleMobileMenu() {
       this.isMobileMenuOpen = !this.isMobileMenuOpen;
-      if (this.isMobileMenuOpen) this.isOpen = false;
     },
     closeMobileMenu() {
       this.isMobileMenuOpen = false;
     },
-  },
-
-  getters: {
-    isMenuOpen: (state) => state.isOpen,
-    isMobileMenuVisible: (state) => state.isMobileMenuOpen,
-    getAllDirections: (state) => state.directions,
-    getMainSections: (state) => state.mainSections,
   },
 });

@@ -13,11 +13,12 @@
             leave-active-class="transition duration-100 ease-in" leave-from-class="transform scale-100 opacity-100"
             leave-to-class="transform scale-95 opacity-0">
             <div v-if="menuStore.isMobileMenuOpen"
-                class="absolute top-16 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-                <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y divide-gray-100">
+                class="fixed inset-x-0 top-14 z-50 bg-white shadow-lg border-t border-gray-200 md:hidden">
+                <div class="divide-y divide-gray-100">
                     <div class="px-5 pt-4 pb-6 space-y-6">
                         <!-- Directions Dropdown -->
-                        <DirectionsDropdownMobile :directions="menuStore.getAllDirections" />
+                        <DirectionsDropdownMobile :directions="menuStore.getAllDirections"
+                            @select="menuStore.closeMobileMenu" />
 
                         <!-- Main Sections -->
                         <nav class="grid gap-y-4">

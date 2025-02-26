@@ -1,19 +1,15 @@
 // components/MainMenu/index.vue
 <template>
     <header class="bg-white shadow-md relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <Logo />
-
+        <div class="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center items-center h-14 md:h-28 relative">
                 <!-- Desktop Navigation -->
-                <DesktopMenu />
+                <DesktopMenu @search="openSearch" />
 
-                <!-- Quick Actions -->
-                <QuickActions @search="openSearch" />
+                <!-- Mobile Menu Button (только на мобильных) -->
 
-                <!-- Mobile Menu Button -->
                 <MobileMenu />
+
             </div>
         </div>
 
@@ -47,6 +43,13 @@ watch(() => useRoute().path, () => {
 onMounted(() => {
     const handleClickOutside = (event: MouseEvent) => {
         const target = event.target as HTMLElement;
+
+        // Проверяем, не является ли элемент кнопкой меню или его потомком
+        const menuButton = document.querySelector('[data-menu-button]');
+        if (menuButton && (menuButton === target || menuButton.contains(target))) {
+            return;
+        }
+
         if (!target.closest('.menu-container')) {
             menuStore.closeMenu();
         }
