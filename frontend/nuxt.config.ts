@@ -29,10 +29,12 @@ export default defineNuxtConfig({
     dirs: ['types', 'composables', 'store'],
   },
 
-  // Настройки для режима разработки
+  // Динамические настройки базового URL в зависимости от окружения
   app: {
-    // Для локальной разработки используем относительный путь
-    baseURL: '/',
+    // Для GitHub Pages нужен префикс с названием репозитория
+    baseURL: process.env.NODE_ENV === 'production' ? '/verona/' : '/',
+    // Настройка для правильной генерации путей к ассетам
+    buildAssetsDir: process.env.NODE_ENV === 'production' ? 'assets/' : '_nuxt/',
     head: {
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -44,48 +46,14 @@ export default defineNuxtConfig({
     },
   },
 
-  // Настройки для устранения проблем с гидратацией
-  // vite: {
-  //   vue: {
-  //     template: {
-  //       compilerOptions: {
-  //         // Более терпимые настройки гидратации
-  //         hydratable: true,
-  //       },
-  //     },
-  //   },
-  //   optimizeDeps: {
-  //     exclude: ['swiper/vue'],
-  //   },
-  //   server: {
-  //     fs: {
-  //       strict: false,
-  //     },
-  //   },
-  // },
-
-  // Генерация статики
+  // Настройки для генерации статики и GitHub Pages
   ssr: true,
-  // nitro: {
-  //   prerender: {
-  //     crawlLinks: true,
-  //     routes: ['/'],
-  //   },
-  // },
-
-  // // Отключаем строгую гидратацию для Nuxt
-  // experimental: {
-  //   // Это может помочь с ошибками гидратации
-  //   componentIslands: false,
-  //   // Отключение строгого режима для несоответствий гидратации
-  //   renderJsonPayloads: false,
-  // },
-
-  // swiper: {
-  //   // Убедитесь, что Swiper правильно загружается
-  //   prefix: 'Swiper',
-  //   styleLang: 'css',
-  // },
-
+  nitro: {
+    preset: 'github-pages',
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],
+    },
+  },
   compatibilityDate: '2025-02-24',
 });
