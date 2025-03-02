@@ -1,4 +1,6 @@
 // utils/promotionData.ts
+const basePath = process.env.NODE_ENV === 'production' ? '/verona' : '';
+
 export interface DoctorPromotion {
   name: string;
   position: string;
@@ -28,7 +30,7 @@ export const promotionsData: Promotion[] = [
     id: 1,
     title: 'Консультация флеболога или сосудистого хирурга + УЗИ вен',
     price: '2990 р.',
-    image: '/img/promotions/phlebologist.png',
+    image: `${basePath}/img/promotions/phlebologist.png`,
     type: 'consultation',
     badge: 'Удобный флебологический чек-лист от опытных флебологов и ангиохирургов Санкт-Петербурга. Выборгский район!',
     doctors: [
@@ -51,7 +53,7 @@ export const promotionsData: Promotion[] = [
     title: 'Забота о Вашем здоровье с клиникой GreenLine:',
     subtitle: 'важные анализы от 100 руб!',
     validUntil: 'до 10.01.2025',
-    image: '/img/promotions/blood-test.png',
+    image: `${basePath}/img/promotions/blood-test.png`,
     type: 'analysis',
     features: [
       'Клинический анализ крови - 200 руб!',
@@ -64,7 +66,7 @@ export const promotionsData: Promotion[] = [
   {
     id: 3,
     title: 'Консультация терапевта за 2 200 руб. — анализы в подарок!',
-    image: '/img/promotions/therapist.png',
+    image: `${basePath}/img/promotions/therapist.png`,
     type: 'consultation',
     features: [
       'Консультация опытного терапевта-клинициста',
