@@ -1,8 +1,9 @@
 // MobileMenu.vue
 <template>
-    <div class="md:hidden">
+    <div class="md:hidden flex flex-row w-full justify-between">
+        <Logo />
         <button @click="menuStore.toggleMobileMenu"
-            class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-green-600 hover:bg-gray-100"
+            class="inline-flex items-center justify-end p-2 rounded-md text-gray-700 hover:text-green-600 hover:bg-gray-100"
             aria-expanded="false">
             <span class="sr-only">Открыть меню</span>
             <Icon :name="menuStore.isMobileMenuOpen ? 'heroicons:x-mark' : 'heroicons:bars-3'" class="h-6 w-6" />
@@ -13,7 +14,7 @@
             leave-active-class="transition duration-100 ease-in" leave-from-class="transform scale-100 opacity-100"
             leave-to-class="transform scale-95 opacity-0">
             <div v-if="menuStore.isMobileMenuOpen"
-                class="fixed inset-x-0 top-14 z-50 bg-white shadow-lg border-t border-gray-200 md:hidden">
+                class="fixed inset-x-0 top-14 z-50 bg-white shadow-lg border-t border-gray-200 md:hidden max-h-[calc(100vh-3.5rem)] overflow-y-auto">
                 <div class="divide-y divide-gray-100">
                     <div class="px-5 pt-4 pb-6 space-y-6">
                         <!-- Directions Dropdown -->

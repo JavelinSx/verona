@@ -1,6 +1,6 @@
 // components/MainMenu/index.vue
 <template>
-    <header class="bg-white shadow-md relative">
+    <header class="bg-white shadow-md fixed z-50 w-full">
         <div class="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center items-center h-14 md:h-28 relative">
                 <!-- Desktop Navigation -->

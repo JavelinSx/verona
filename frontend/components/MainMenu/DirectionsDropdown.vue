@@ -13,7 +13,7 @@
             enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150"
             leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
             <div v-if="menuStore.isMenuOpen"
-                class="absolute left-0 z-50 w-72 rounded-md rounded-t-[0px] border border-t-[0px] bg-white focus:outline-none">
+                class="absolute left-0 z-50 w-72 max-h-[80vh] overflow-y-auto rounded-md rounded-t-[0px] border border-t-[0px] bg-white focus:outline-none">
                 <div>
                     <div v-for="section in menuStore.getAllDirections" :key="section.title"
                         class=" min-h-[56px] flex items-center w-full" @mouseenter="hoverSection = section.title"

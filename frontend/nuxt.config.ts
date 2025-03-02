@@ -34,7 +34,7 @@ export default defineNuxtConfig({
     // Для GitHub Pages нужен префикс с названием репозитория
     baseURL: process.env.NODE_ENV === 'production' ? '/verona/' : '/',
     // Настройка для правильной генерации путей к ассетам
-    buildAssetsDir: process.env.NODE_ENV === 'production' ? 'assets/' : '_nuxt/',
+    buildAssetsDir: process.env.NODE_ENV === 'production' ? 'assets/' : '',
     head: {
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

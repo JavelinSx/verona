@@ -1,6 +1,6 @@
 // DesktopMenu.vue
 <template>
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full hidden md:block">
         <!-- Верхняя часть с логотипом и быстрыми действиями -->
         <div class="hidden md:flex md:justify-between items-center h-16 py-2">
             <Logo />

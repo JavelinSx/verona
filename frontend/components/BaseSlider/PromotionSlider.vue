@@ -1,8 +1,8 @@
 <!-- components/BaseSlider/PromotionSlider.vue -->
 <template>
-    <div class="relative w-full mb-12 mt-8">
+    <div class="relative w-full mb-12 pt-20 md:pt-9">
         <div class="max-w-screen-lg mx-auto">
-            <h2 class="text-2xl md:text-3xl font-normal text-gray-800 mb-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-normal text-gray-800 mb-3 md:mb-6 text-center">
                 {{ title }}
             </h2>
 

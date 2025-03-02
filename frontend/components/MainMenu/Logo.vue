@@ -2,7 +2,7 @@
 <template>
     <NuxtLink to="/" class="flex items-center">
         <img :src="logo" alt="ВеронаМед" class="h-8 w-auto sm:h-10" />
-        <span class="ml-2 text-xl font-semibold text-green-600 hidden sm:block">
+        <span class="ml-2 text-xl font-normal text-green-600 sm:block">
             ВеронаМед
         </span>
     </NuxtLink>

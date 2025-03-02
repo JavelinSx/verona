@@ -19,7 +19,7 @@
                 enter-from-class="transform scale-y-95 opacity-0" enter-to-class="transform scale-y-100 opacity-100"
                 leave-active-class="transition duration-100 ease-in"
                 leave-from-class="transform scale-y-100 opacity-100" leave-to-class="transform scale-y-95 opacity-0">
-                <div v-if="openSections[section.title]" class="mt-2 pl-10 origin-top">
+                <div v-if="openSections[section.title]" class="mt-2 pl-10 origin-top max-h-[50vh] overflow-y-auto">
                     <ul class="space-y-2">
                         <li v-for="item in section.items" :key="item.name" class="py-1">
                             <div>
