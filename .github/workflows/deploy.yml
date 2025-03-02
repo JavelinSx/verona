@@ -29,7 +29,7 @@ jobs:
         run: |
           cd frontend
           npm run generate
-
+          touch .output/public/.nojekyll # Создаем .nojekyll файл
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
