@@ -1,3 +1,4 @@
+// @ts-nocheck
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/icon'],
   css: ['@/assets/css/global.css'],
@@ -5,7 +6,6 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: true,
   },
-
   components: {
     dirs: [
       {
@@ -16,17 +16,23 @@ export default defineNuxtConfig({
         path: '~/components/MainMenu',
         pathPrefix: false,
       },
+      {
+        path: '~/components/BaseSlider',
+        pathPrefix: false,
+      },
     ],
   },
-
-  imports: {
-    dirs: ['store'],
+  tailwindcss: {
+    exposeConfig: true,
   },
-  // Настройки для GitHub Pages
+  imports: {
+    dirs: ['types', 'composables', 'store'],
+  },
+
+  // Настройки для режима разработки
   app: {
-    baseURL: '/verona/', // Замените 'verona' на имя вашего репозитория
-    buildAssetsDir: '/assets/', // Префикс для ассетов
-    // Для поддержки клиентской маршрутизации
+    // Для локальной разработки используем относительный путь
+    baseURL: '/',
     head: {
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -38,13 +44,48 @@ export default defineNuxtConfig({
     },
   },
 
+  // Настройки для устранения проблем с гидратацией
+  // vite: {
+  //   vue: {
+  //     template: {
+  //       compilerOptions: {
+  //         // Более терпимые настройки гидратации
+  //         hydratable: true,
+  //       },
+  //     },
+  //   },
+  //   optimizeDeps: {
+  //     exclude: ['swiper/vue'],
+  //   },
+  //   server: {
+  //     fs: {
+  //       strict: false,
+  //     },
+  //   },
+  // },
+
   // Генерация статики
-  ssr: true, // Для правильной генерации статического сайта
-  nitro: {
-    prerender: {
-      crawlLinks: true, // Авто-прекомпиляция всех страниц
-      routes: ['/'], // Дополнительные маршруты для прекомпиляции
-    },
-  },
+  ssr: true,
+  // nitro: {
+  //   prerender: {
+  //     crawlLinks: true,
+  //     routes: ['/'],
+  //   },
+  // },
+
+  // // Отключаем строгую гидратацию для Nuxt
+  // experimental: {
+  //   // Это может помочь с ошибками гидратации
+  //   componentIslands: false,
+  //   // Отключение строгого режима для несоответствий гидратации
+  //   renderJsonPayloads: false,
+  // },
+
+  // swiper: {
+  //   // Убедитесь, что Swiper правильно загружается
+  //   prefix: 'Swiper',
+  //   styleLang: 'css',
+  // },
+
   compatibilityDate: '2025-02-24',
 });

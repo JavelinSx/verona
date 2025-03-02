@@ -13,14 +13,17 @@
   "dependencies": {
     "@vueuse/core": "^12.7.0",
     "nuxt": "^3.15.4",
+    "nuxt-swiper": "^2.0.0",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@iconify-json/heroicons": "^1.2.2",
     "@nuxt/icon": "^1.10.3",
     "@nuxt/typescript-build": "^3.0.2",
     "@nuxtjs/tailwindcss": "^6.13.1",
     "@pinia/nuxt": "^0.10.1",
+    "@types/swiper": "^5.4.3",
     "gh-pages": "^6.3.0",
     "vue-tsc": "^2.1.10"
   }

@@ -8,5 +8,5 @@
     </NuxtLink>
 </template>
 <script setup lang="ts">
-import logo from '../../assets/img/logo512.png'
+import logo from '~/public/img/logo512.png'
 </script>

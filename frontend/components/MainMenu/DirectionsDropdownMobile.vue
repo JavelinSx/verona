@@ -65,7 +65,8 @@
 </template>
 
 <script setup lang="ts">
-import type { MenuItem } from '~/types/menu';
+import { ref } from 'vue';
+import type { MenuItem } from '../../types/menu';
 
 const props = defineProps<{
     directions: MenuItem[]
