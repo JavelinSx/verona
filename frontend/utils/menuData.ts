@@ -12,7 +12,7 @@ export const mainSections: MenuSection[] = [
 
 export const directionsData: MenuItem[] = [
   {
-    title: 'Взрослое отделение',
+    title: 'Направления',
     icon: 'heroicons:user-group',
     items: [
       {

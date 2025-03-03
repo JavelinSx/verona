@@ -1,6 +1,12 @@
 <!-- components/BaseSlider/SliderSlide.vue -->
 <template>
-    <SwiperSlide :class="slideClass">
+    <SwiperSlide :class="[
+        'slide-custom',
+        'w-[90%]',
+        'md:w-[calc(min(650px,70vw))]',
+        'lg:w-[calc(min(750px,65vw))]',
+        slideClass
+    ]">
         <div class="slide-content bg-white rounded-xl overflow-hidden shadow-lg">
             <slot></slot>
         </div>

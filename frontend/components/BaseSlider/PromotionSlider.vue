@@ -1,6 +1,6 @@
 <!-- components/BaseSlider/PromotionSlider.vue -->
 <template>
-    <div class="relative w-full mb-12 pt-20 md:pt-9">
+    <div class="relative w-full mb-12 pt-20 md:pt-36">
         <div class="max-w-screen-lg mx-auto">
             <h2 class="text-2xl md:text-3xl font-normal text-gray-800 mb-3 md:mb-6 text-center">
                 {{ title }}
@@ -26,21 +26,19 @@
                     }" :autoplay="{
                         delay: 5000,
                         disableOnInteraction: false
-                    }" :speed="800" class="promotion-swiper">
+                    }" :speed="800" class="promotion-swiper ">
 
                     <SwiperSlide v-for="promotion in promotions" :key="promotion.id" class="swiper-slide-custom">
-                        <div class="flex flex-col md:flex-row bg-white rounded-xl overflow-hidden shadow-lg h-full">
+                        <div class="flex flex-col md:flex-row bg-white rounded-xl overflow-hidden shadow-lg h-full ">
                             <!-- Image Side - скрываем на мобильных -->
-                            <div v-if="promotion.image"
-                                class="hidden md:block md:w-1/2 relative bg-gray-100 min-h-[250px]">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-r from-green-600/10 to-green-600/30 z-10 pointer-events-none">
+                            <div v-if="promotion.image" class="md:w-1/2 relative bg-gray-100 min-h-[250px]">
+                                <div class="absolute z-10 pointer-events-none">
                                 </div>
                                 <img :src="promotion.image" :alt="promotion.title" class="w-full h-full object-cover" />
                             </div>
 
                             <!-- Content Side -->
-                            <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col">
+                            <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col h-full">
                                 <div class="flex flex-col h-full">
                                     <!-- Valid until -->
                                     <div v-if="promotion.validUntil" class="text-sm text-gray-600 mb-2">
@@ -149,29 +147,13 @@ const promotions = ref<Promotion[]>(props.customPromotions || promotionsData);
 // Определяем массив модулей Swiper
 const swiperModules = [Autoplay, Pagination, Navigation, EffectCoverflow];
 
-// // Определение мобильного устройства
-// const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 640);
-// const isMobile = computed(() => windowWidth.value < 640);
-
-// // Отслеживание изменения размера окна
-// const handleResize = () => {
-//     windowWidth.value = window.innerWidth;
-// };
-
-// onMounted(() => {
-//     window.addEventListener('resize', handleResize);
-// });
-
-// onUnmounted(() => {
-//     window.removeEventListener('resize', handleResize);
-// });
 </script>
 
 <style scoped>
 .promotion-swiper {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
+
+    padding-top: 20px;
+    padding-bottom: 12px;
 }
 
 .promotion-swiper :deep(.swiper-wrapper) {
@@ -208,6 +190,11 @@ const swiperModules = [Autoplay, Pagination, Navigation, EffectCoverflow];
 
 .promotion-swiper :deep(.swiper-slide-active) {
     z-index: 10;
+}
+
+.promotion-swiper :deep(.swiper-pagination) {
+    bottom: -30px;
+    /* Сдвигаем пагинацию ниже, чтобы она не перекрывалась */
 }
 
 .promotion-swiper :deep(.swiper-pagination-bullet) {
