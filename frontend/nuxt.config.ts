@@ -34,7 +34,7 @@ export default defineNuxtConfig({
     // Для GitHub Pages нужен префикс с названием репозитория
     baseURL: process.env.NODE_ENV === 'production' ? '/verona/' : '/',
     // Настройка для правильной генерации путей к ассетам
-    buildAssetsDir: process.env.NODE_ENV === 'production' ? 'assets/' : '',
+    buildAssetsDir: process.env.NODE_ENV === 'production' ? 'assets/' : '_nuxt/',
     head: {
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -48,13 +48,5 @@ export default defineNuxtConfig({
 
   // Настройки для генерации статики и GitHub Pages
   ssr: true,
-  nitro: {
-    preset: 'github-pages',
-    prerender: {
-      crawlLinks: false, // Отключаем автоматический обход
-      routes: ['/', '/about', '/doctors', '/prices', '/promotions', '/reviews', '/contacts'], // Указываем только существующие маршруты
-      failOnError: false, // Не прерывать генерацию при ошибках
-    },
-  },
   compatibilityDate: '2025-02-24',
 });
