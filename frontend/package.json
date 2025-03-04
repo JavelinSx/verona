@@ -11,6 +11,7 @@
     "deploy": "gh-pages -d .output/public"
   },
   "dependencies": {
+    "@iconify/json": "^2.2.312",
     "@vueuse/core": "^12.7.0",
     "nuxt": "^3.15.4",
     "nuxt-swiper": "^2.0.0",

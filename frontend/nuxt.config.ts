@@ -51,8 +51,9 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'github-pages',
     prerender: {
-      crawlLinks: true,
-      routes: ['/'],
+      crawlLinks: false, // Отключаем автоматический обход
+      routes: ['/', '/about', '/doctors', '/prices', '/promotions', '/reviews', '/contacts'], // Указываем только существующие маршруты
+      failOnError: false, // Не прерывать генерацию при ошибках
     },
   },
   compatibilityDate: '2025-02-24',
