@@ -14,9 +14,9 @@
 <script setup lang="ts">
 // Настройка метаданных страницы
 useHead({
-  title: 'cardiology - ВеронаМед',
+  title: 'orthopedics - ВеронаМед',
   meta: [
-    { name: 'description', content: 'Информация о cardiology в клинике ВеронаМед' }
+    { name: 'description', content: 'Информация о orthopedics в клинике ВеронаМед' }
   ]
 })
 </script>
